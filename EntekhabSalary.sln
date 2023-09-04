@@ -1,0 +1,87 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entekhab.Common", "01-Frameworks\Entekhab.Common\Entekhab.Common.csproj", "{539536C6-05F8-42F8-AC9C-53F780877E16}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01-Frameworks", "01-Frameworks", "{3C643EC6-C943-44A0-96A8-8D37A59EE4C3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02-Domain", "02-Domain", "{2176A68B-5DF4-4B6F-A8B3-80A1DCA54D7F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entekhab.Domain.Entities", "02-Domain\Entekhab.Domain.Entities\Entekhab.Domain.Entities.csproj", "{BD559406-4415-4638-B905-FC5AFDA9DA8E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03-Infrastructures", "03-Infrastructures", "{41138922-BB96-4623-8E2E-B3ACFB92EA29}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entekhab.Data.EntityFramework", "03-Infrastructures\Entekhab.Data.EntityFramework\Entekhab.Data.EntityFramework.csproj", "{D31F609A-5BD2-4021-B989-127D6F3F602D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04-UIServices", "04-UIServices", "{43F88BE1-1338-4A78-99FD-134E60157F65}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entekhab.UIServices.Mappers", "04-UIServices\Entekhab.UIServices.Mappers\Entekhab.UIServices.Mappers.csproj", "{DBFBEE3B-F70C-4FD1-A623-CCE86891D556}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entekhab.UIServices.ViewModels", "04-UIServices\Entekhab.UIServices.ViewModels\Entekhab.UIServices.ViewModels.csproj", "{F80D9AAA-C75F-452D-8E5A-CD0C970FE281}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05-EndPoints", "05-EndPoints", "{40F1E7A9-3C19-4A03-87AF-757C2CB5908B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entekhab.Domain.BusinessLogics", "02-Domain\Entekhab.Domain.BusinessLogics\Entekhab.Domain.BusinessLogics.csproj", "{FFFB433B-8225-470B-8EDF-0CC703BA904E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entekhab.Ui.WebApi", "05-EndPoints\Entekhab.Ui.WebApi\Entekhab.Ui.WebApi.csproj", "{35D274E2-FE0B-48E6-887D-0ADA3E672026}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OvertimeMethods", "03-Infrastructures\OvertimeMethods\OvertimeMethods.csproj", "{2C40835A-674A-4741-ABDB-EB3E03F231C0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{539536C6-05F8-42F8-AC9C-53F780877E16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{539536C6-05F8-42F8-AC9C-53F780877E16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{539536C6-05F8-42F8-AC9C-53F780877E16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{539536C6-05F8-42F8-AC9C-53F780877E16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD559406-4415-4638-B905-FC5AFDA9DA8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD559406-4415-4638-B905-FC5AFDA9DA8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD559406-4415-4638-B905-FC5AFDA9DA8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD559406-4415-4638-B905-FC5AFDA9DA8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D31F609A-5BD2-4021-B989-127D6F3F602D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D31F609A-5BD2-4021-B989-127D6F3F602D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D31F609A-5BD2-4021-B989-127D6F3F602D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D31F609A-5BD2-4021-B989-127D6F3F602D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBFBEE3B-F70C-4FD1-A623-CCE86891D556}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBFBEE3B-F70C-4FD1-A623-CCE86891D556}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBFBEE3B-F70C-4FD1-A623-CCE86891D556}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBFBEE3B-F70C-4FD1-A623-CCE86891D556}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F80D9AAA-C75F-452D-8E5A-CD0C970FE281}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F80D9AAA-C75F-452D-8E5A-CD0C970FE281}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F80D9AAA-C75F-452D-8E5A-CD0C970FE281}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F80D9AAA-C75F-452D-8E5A-CD0C970FE281}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFFB433B-8225-470B-8EDF-0CC703BA904E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFFB433B-8225-470B-8EDF-0CC703BA904E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFFB433B-8225-470B-8EDF-0CC703BA904E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFFB433B-8225-470B-8EDF-0CC703BA904E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35D274E2-FE0B-48E6-887D-0ADA3E672026}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35D274E2-FE0B-48E6-887D-0ADA3E672026}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35D274E2-FE0B-48E6-887D-0ADA3E672026}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35D274E2-FE0B-48E6-887D-0ADA3E672026}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C40835A-674A-4741-ABDB-EB3E03F231C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C40835A-674A-4741-ABDB-EB3E03F231C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C40835A-674A-4741-ABDB-EB3E03F231C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C40835A-674A-4741-ABDB-EB3E03F231C0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{539536C6-05F8-42F8-AC9C-53F780877E16} = {3C643EC6-C943-44A0-96A8-8D37A59EE4C3}
+		{BD559406-4415-4638-B905-FC5AFDA9DA8E} = {2176A68B-5DF4-4B6F-A8B3-80A1DCA54D7F}
+		{D31F609A-5BD2-4021-B989-127D6F3F602D} = {41138922-BB96-4623-8E2E-B3ACFB92EA29}
+		{DBFBEE3B-F70C-4FD1-A623-CCE86891D556} = {43F88BE1-1338-4A78-99FD-134E60157F65}
+		{F80D9AAA-C75F-452D-8E5A-CD0C970FE281} = {43F88BE1-1338-4A78-99FD-134E60157F65}
+		{FFFB433B-8225-470B-8EDF-0CC703BA904E} = {2176A68B-5DF4-4B6F-A8B3-80A1DCA54D7F}
+		{35D274E2-FE0B-48E6-887D-0ADA3E672026} = {40F1E7A9-3C19-4A03-87AF-757C2CB5908B}
+		{2C40835A-674A-4741-ABDB-EB3E03F231C0} = {41138922-BB96-4623-8E2E-B3ACFB92EA29}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {30B64C97-88C5-4274-8B7F-3EA87C664C91}
+	EndGlobalSection
+EndGlobal
