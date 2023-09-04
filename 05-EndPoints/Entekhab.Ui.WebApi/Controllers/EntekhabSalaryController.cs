@@ -35,15 +35,15 @@ namespace Entekhab.Ui.WebApi.Controllers
             //Xml Data Sample
             //"<HREmployee><FirstName>Mohammad</FirstName><LastName>Sadighi</LastName><BasicSalary>50000</BasicSalary><Allowance>2000</Allowance><Transportation>1000</Transportation><Date>1402/06/01</Date></HREmployee>"
 
-            var deserializeريالesult = RequestDataDeserializer.DeserializeDataToModel(datatype, requestModel.data);
+            var deserializeResult = RequestDataDeserializer.DeserializeDataToModel(datatype, requestModel.data);
 
-            if (!deserializeريالesult.Successed)
-                return BadRequest(deserializeريالesult.Message);
+            if (!deserializeResult.Successed)
+                return BadRequest(deserializeResult.Message);
 
-            if (deserializeريالesult.Value == null)
+            if (deserializeResult.Value == null)
                 return BadRequest("دیتا صحیح نمی باشد");
             
-            var employeeData = (HREmployeeViewModel)deserializeريالesult.Value;
+            var employeeData = (HREmployeeViewModel)deserializeResult.Value;
 
             employeeData.MethodName = requestModel.overTimeCalculator;
 
@@ -64,15 +64,15 @@ namespace Entekhab.Ui.WebApi.Controllers
             //Xml Data Sample
             //"<HREmployee><FirstName>Mohammad</FirstName><LastName>Sadighi</LastName><BasicSalary>50000</BasicSalary><Allowance>2000</Allowance><Transportation>1000</Transportation><Date>1402/06/01</Date></HREmployee>"
 
-            var deserializeريالesult = RequestDataDeserializer.DeserializeDataToModel(datatype, requestModel.data);
+            var deserializeResult = RequestDataDeserializer.DeserializeDataToModel(datatype, requestModel.data);
 
-            if (!deserializeريالesult.Successed)
-                return BadRequest(deserializeريالesult.Message);
+            if (!deserializeResult.Successed)
+                return BadRequest(deserializeResult.Message);
 
-            if (deserializeريالesult.Value == null)
+            if (deserializeResult.Value == null)
                 return BadRequest("دیتا صحیح نمی باشد");
 
-            var employeeData = (HREmployeeViewModel)deserializeريالesult.Value;
+            var employeeData = (HREmployeeViewModel)deserializeResult.Value;
 
             employeeData.MethodName = requestModel.overTimeCalculator;
 
