@@ -64,6 +64,17 @@ public class HREmployeeBr
     /// <returns></returns>
     public static SysResult DeletePrecondition(MainDbContext mainDbContext, HREmployeeViewModel viewModel)
     {
+        var HREmployeeRepository = new HREmployeeRepository(mainDbContext);
+
+        var result = HREmployeeRepository.Where(x => x.FirstName == viewModel.FirstName &&
+                                                    x.LastName == viewModel.LastName &&
+                                                    x.Date == viewModel.Date).FirstOrDefault();
+
+        if (result == null)
+        {
+            return Result.Error("اطلاعات موردنظر برای حذف یافت نشد");
+        }
+
         return Result.Success("هیچ مانعی برای ادامه عملیات حذف وجود ندارد");
     }
     //********************************************************************************************************************

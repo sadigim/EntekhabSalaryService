@@ -70,11 +70,11 @@ public class HREmployeeBl : BusinessLogic<HREmployeeRepository, HREmployeeModel,
                 //---------------------------------------------------------------------------------------
 
 
-                var HREmployeeAddResult = HREmployeeCore.Add(_dbContext, viewModel, _companyId, userId);
+                var addResult = HREmployeeCore.Add(_dbContext, viewModel, _companyId, userId);
 
-                if (!HREmployeeAddResult.Successed)
+                if (!addResult.Successed)
                 {
-                    return HREmployeeAddResult;
+                    return addResult;
                 }
 
                 transaction.Commit();
@@ -134,16 +134,48 @@ public class HREmployeeBl : BusinessLogic<HREmployeeRepository, HREmployeeModel,
                 //---------------------------------------------------------------------------------------
 
 
-                var HREmployeeAddResult = HREmployeeCore.Update(_dbContext, viewModel, userId);
+                var updateResult = HREmployeeCore.Update(_dbContext, viewModel, userId);
 
-                if (!HREmployeeAddResult.Successed)
+                if (!updateResult.Successed)
                 {
-                    return HREmployeeAddResult;
+                    return updateResult;
                 }
 
                 transaction.Commit();
 
                 return Result.Success("عملیات بروزرسانی با موفقیت انجام گردید");
+            }
+            catch (Exception e)
+            {
+                transaction.Rollback();
+                return Result.ErrorOfException(e);
+            }
+        }
+    }
+    //********************************************************************************************************************
+    public override SysResult Delete(HREmployeeViewModel viewModel)
+    {
+        using (var transaction = _dbContext.Database.BeginTransaction())
+        {
+            try
+            {
+                var deletePreconditionResult = HREmployeeBr.DeletePrecondition(_dbContext, viewModel);
+
+                if (!deletePreconditionResult.Successed)
+                    return deletePreconditionResult;
+
+                var deleteResult = HREmployeeCore.Delete(_dbContext, x => x.FirstName == viewModel.FirstName &&
+                                                                        x.LastName == viewModel.LastName &&
+                                                                        x.Date == viewModel.Date);
+
+                if (!deleteResult.Successed)
+                {
+                    return deleteResult;
+                }
+
+                transaction.Commit();
+
+                return Result.Success("عملیات حذف با موفقیت انجام گردید");
             }
             catch (Exception e)
             {
