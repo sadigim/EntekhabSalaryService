@@ -113,6 +113,33 @@ namespace Entekhab.Ui.WebApi.Controllers
             return Ok(result.Message);
         }
         //********************************************************************************************************************
+        [HttpPost("Get")]
+        [SwaggerOperation(Summary = "Get Employee Salary Info", Description = "Custome Data Sample:\"FirstName/LastName/Date\rMohammad/Sadighi/14020601\" <br /> Json Data Sample:\"{'FirstName': 'Mohammad','LastName': 'Sadighi','Date': '14020601'}\"")]
+        public IActionResult Get(string datatype, [FromBody] string data)
+        {
+            //Xml Data Sample
+            //"<HREmployee><FirstName>Mohammad</FirstName><LastName>Sadighi</LastName><Date>1402/06/01</Date></HREmployee>"
+
+            var deserializeResult = RequestDataDeserializer.DeserializeDataToModel(datatype, data);
+
+            if (!deserializeResult.Successed)
+                return BadRequest(deserializeResult.Message);
+
+            if (deserializeResult.Value == null)
+                return BadRequest("دیتا صحیح نمی باشد");
+
+            var employeeData = (HREmployeeViewModel)deserializeResult.Value;
+
+            var result = _bl.Get(employeeData);
+
+            if (!result.Successed)
+            {
+                return BadRequest(result.Message);
+            }
+
+            return Ok(result.Value);
+        }
+        //********************************************************************************************************************
 
     }
     //********************************************************************************************************************

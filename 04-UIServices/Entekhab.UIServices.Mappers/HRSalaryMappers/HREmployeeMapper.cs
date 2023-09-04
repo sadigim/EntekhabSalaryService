@@ -43,7 +43,7 @@ public class HREmployeeMapper
     /// </summary>
     /// <param name="model">مدل</param>
     /// <returns></returns>
-    public static HREmployeeListViewModel ToListViewModel(HREmployeeModel model)
+    public static SysResult ToListViewModel(HREmployeeModel model)
     {
         var viewModel = new HREmployeeListViewModel
         {
@@ -67,7 +67,7 @@ public class HREmployeeMapper
             }
         };
 
-        return viewModel;
+        return Result.Success("عمليات با موفقيت انجام شد", viewModel);
     }
     //********************************************************************************************************************
     /// <summary>

@@ -185,4 +185,24 @@ public class HREmployeeBl : BusinessLogic<HREmployeeRepository, HREmployeeModel,
         }
     }
     //********************************************************************************************************************
+    public SysResult Get(HREmployeeViewModel viewModel)
+    {
+        try
+        {
+                
+            var firstOrDefaultResult = HREmployeeCore.FirstOrDefault(_dbContext, 
+                                                                    x => x.FirstName == viewModel.FirstName &&
+                                                                        x.LastName == viewModel.LastName &&
+                                                                        x.Date == viewModel.Date,
+                                                                    IncludeExpressions);
+
+            return firstOrDefaultResult;
+        }
+        catch (Exception e)
+        {
+            return Result.ErrorOfException(e);
+        }
+        
+    }
+    //********************************************************************************************************************
 }
