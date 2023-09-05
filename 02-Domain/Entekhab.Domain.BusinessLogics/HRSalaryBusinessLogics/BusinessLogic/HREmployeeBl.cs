@@ -190,19 +190,40 @@ public class HREmployeeBl : BusinessLogic<HREmployeeRepository, HREmployeeModel,
         try
         {
                 
-            var firstOrDefaultResult = HREmployeeCore.FirstOrDefault(_dbContext, 
+            var result = HREmployeeCore.FirstOrDefault(_dbContext, 
                                                                     x => x.FirstName == viewModel.FirstName &&
                                                                         x.LastName == viewModel.LastName &&
                                                                         x.Date == viewModel.Date,
                                                                     IncludeExpressions);
 
-            return firstOrDefaultResult;
+            return result;
         }
         catch (Exception e)
         {
             return Result.ErrorOfException(e);
         }
         
+    }
+    //********************************************************************************************************************
+    public SysResult GetRange(string firstName, string lastName, string startDate, string endDate)
+    {
+        try
+        {
+
+            var result = HREmployeeCore.Where(_dbContext,
+                                            x => x.FirstName == firstName &&
+                                                x.LastName == lastName &&
+                                                x.Date.CompareTo(startDate) >= 0 &&
+                                                x.Date.CompareTo(endDate) <= 0,
+                                            IncludeExpressions);
+
+            return result;
+        }
+        catch (Exception e)
+        {
+            return Result.ErrorOfException(e);
+        }
+
     }
     //********************************************************************************************************************
 }

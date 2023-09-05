@@ -12,6 +12,14 @@ namespace Entekhab.Ui.WebApi.Controllers
         public string data { get; set; }
         public string overTimeCalculator { get; set; }
     }
+
+    public class HRRangeRequestModel
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string StartDate { get; set; }
+        public string EndDate { get; set; }
+    }
     //********************************************************************************************************************
 
 
@@ -28,6 +36,13 @@ namespace Entekhab.Ui.WebApi.Controllers
             _bl = hrEmployeeBl;
         }
         //********************************************************************************************************************
+        [HttpGet("Welcome")]
+        [SwaggerOperation(Summary = "Welcome Message", Description = "Returns a welcome message for testing purposes.")]
+        public IActionResult Welcome()
+        {
+            return Ok("Welcome to the EntekhabSalary API. This is a test endpoint.");
+        }
+        //********************************************************************************************************************
         [HttpPost("Add")]
         [SwaggerOperation(Summary = "Add Employee Salary", Description = "Custome Data Sample:\"FirstName/LastName/BasicSalary/Allowance/Transportation/Date\rMohammad/Sadighi/50000/2000/1000/14020601\" <br /> Json Data Sample:\"{'FirstName': 'Mohammad','LastName': 'Sadighi','BasicSalary': '50000','Allowance': '2000','Transportation': '1000','Date': '14020601'}\"")]
         public IActionResult Add(string datatype, [FromBody] RequestBodyModel requestModel)
@@ -35,7 +50,7 @@ namespace Entekhab.Ui.WebApi.Controllers
             //Xml Data Sample
             //"<HREmployee><FirstName>Mohammad</FirstName><LastName>Sadighi</LastName><BasicSalary>50000</BasicSalary><Allowance>2000</Allowance><Transportation>1000</Transportation><Date>1402/06/01</Date></HREmployee>"
 
-            var deserializeResult = RequestDataDeserializer.DeserializeDataToModel(datatype, requestModel.data);
+            var deserializeResult = RequestDataDeserializer.DeserializeDataToModel<HREmployeeViewModel>(datatype, requestModel.data);
 
             if (!deserializeResult.Successed)
                 return BadRequest(deserializeResult.Message);
@@ -64,7 +79,7 @@ namespace Entekhab.Ui.WebApi.Controllers
             //Xml Data Sample
             //"<HREmployee><FirstName>Mohammad</FirstName><LastName>Sadighi</LastName><BasicSalary>50000</BasicSalary><Allowance>2000</Allowance><Transportation>1000</Transportation><Date>1402/06/01</Date></HREmployee>"
 
-            var deserializeResult = RequestDataDeserializer.DeserializeDataToModel(datatype, requestModel.data);
+            var deserializeResult = RequestDataDeserializer.DeserializeDataToModel<HREmployeeViewModel>(datatype, requestModel.data);
 
             if (!deserializeResult.Successed)
                 return BadRequest(deserializeResult.Message);
@@ -93,7 +108,7 @@ namespace Entekhab.Ui.WebApi.Controllers
             //Xml Data Sample
             //"<HREmployee><FirstName>Mohammad</FirstName><LastName>Sadighi</LastName><Date>1402/06/01</Date></HREmployee>"
 
-            var deserializeResult = RequestDataDeserializer.DeserializeDataToModel(datatype, data);
+            var deserializeResult = RequestDataDeserializer.DeserializeDataToModel<HREmployeeViewModel>(datatype, data);
 
             if (!deserializeResult.Successed)
                 return BadRequest(deserializeResult.Message);
@@ -120,7 +135,7 @@ namespace Entekhab.Ui.WebApi.Controllers
             //Xml Data Sample
             //"<HREmployee><FirstName>Mohammad</FirstName><LastName>Sadighi</LastName><Date>1402/06/01</Date></HREmployee>"
 
-            var deserializeResult = RequestDataDeserializer.DeserializeDataToModel(datatype, data);
+            var deserializeResult = RequestDataDeserializer.DeserializeDataToModel<HREmployeeViewModel>(datatype, data);
 
             if (!deserializeResult.Successed)
                 return BadRequest(deserializeResult.Message);
@@ -131,6 +146,33 @@ namespace Entekhab.Ui.WebApi.Controllers
             var employeeData = (HREmployeeViewModel)deserializeResult.Value;
 
             var result = _bl.Get(employeeData);
+
+            if (!result.Successed)
+            {
+                return BadRequest(result.Message);
+            }
+
+            return Ok(result.Value);
+        }
+        //********************************************************************************************************************
+        [HttpPost("Getrange")]
+        [SwaggerOperation(Summary = "Getrange Employee Salary Info", Description = "Custome Data Sample:\"FirstName/LastName/StartDate/EndDate\rMohammad/Sadighi/14020101/14020601\" <br /> Json Data Sample:\"{'FirstName': 'Mohammad','LastName': 'Sadighi','StartDate': '14020101','EndDate': '14020601'}\"")]
+        public IActionResult Getrange(string datatype, [FromBody] string data)
+        {
+            //Xml Data Sample
+            //"<HREmployee><FirstName>Mohammad</FirstName><LastName>Sadighi</LastName><StartDate>1402/01/01</StartDate><EndDate>1402/06/01</EndDate></HREmployee>"
+
+            var deserializeResult = RequestDataDeserializer.DeserializeDataToModel<HRRangeRequestModel>(datatype, data);
+
+            if (!deserializeResult.Successed)
+                return BadRequest(deserializeResult.Message);
+
+            if (deserializeResult.Value == null)
+                return BadRequest("دیتا صحیح نمی باشد");
+
+            var rangeRequestData = (HRRangeRequestModel)deserializeResult.Value;
+
+            var result = _bl.GetRange(rangeRequestData.FirstName, rangeRequestData.LastName, rangeRequestData.StartDate, rangeRequestData.EndDate);
 
             if (!result.Successed)
             {

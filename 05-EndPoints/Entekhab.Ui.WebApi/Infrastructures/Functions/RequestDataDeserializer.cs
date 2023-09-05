@@ -1,20 +1,19 @@
 ﻿using Entekhab.Common.Functions;
 using Entekhab.Common.Objects;
 using Entekhab.Ui.WebApi.Infrastructures.Extensions;
-using Entekhab.UIServices.ViewModels.HRSalaryViewModels;
 
 namespace Entekhab.Ui.WebApi.Infrastructures.Functions;
 
 internal class RequestDataDeserializer
 {
-    public static SysResult DeserializeDataToModel(string dataType, string data)
+    public static SysResult DeserializeDataToModel<TModel>(string dataType, string data) where TModel : new()
     {
-        HREmployeeViewModel model = new();
+        TModel model = new();
 
         switch (dataType)
         {
             case "json":
-                var deserializedJsonDataModel = data.DeserializeJsonData<HREmployeeViewModel>();
+                var deserializedJsonDataModel = data.DeserializeJsonData<TModel>();
 
                 if (deserializedJsonDataModel != null)
                 {
@@ -28,7 +27,7 @@ internal class RequestDataDeserializer
                 break;
 
             case "xml":
-                var deserializedJXmlDataModel = data.DeserializeXmlData<HREmployeeViewModel>();
+                var deserializedJXmlDataModel = data.DeserializeXmlData<TModel>();
 
                 if (deserializedJXmlDataModel != null)
                 {
@@ -49,7 +48,7 @@ internal class RequestDataDeserializer
                 }
 
                 Dictionary<string, string> employeeInfo = data.DeserializeCustomData();
-                model = DictionaryTools.DictionaryToModelMapper<HREmployeeViewModel>(employeeInfo);
+                model = DictionaryTools.DictionaryToModelMapper<TModel>(employeeInfo);
                 break;
 
             default:
