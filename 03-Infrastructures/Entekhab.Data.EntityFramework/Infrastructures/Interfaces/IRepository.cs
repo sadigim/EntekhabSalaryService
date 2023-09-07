@@ -2,7 +2,7 @@
 
 namespace Entekhab.Data.EntityFramework.Infrastructures.Interfaces;
 
-public interface IDal<T> : IDisposable where T : class
+internal interface IRepository<T> : IDisposable where T : class
 {
     //********************************************************************************************************************
     /// <summary>

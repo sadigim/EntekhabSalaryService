@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Entekhab.Data.EntityFramework.Infrastructures.Repositories;
 
-public class DalRepository<T> : IDal<T> where T : class
+public abstract class EFRepository<T> : IRepository<T> where T : class
 {
     private readonly MainDbContext _db;
     //********************************************************************************************************************
-    public DalRepository(MainDbContext dbContext)
+    public EFRepository(MainDbContext dbContext)
     {
         _db = dbContext;
     }
